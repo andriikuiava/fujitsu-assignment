@@ -8,10 +8,18 @@ The project calculates delivery fees based on weather conditions. It includes fe
 
 ---
 
+### **Technologies**
+- Java 17
+- Gradle
+- Spring Boot
+- H2 Database
+
+---
+
 ### **How to Run**
 - Clone the repository.
 - Open the project in an IDE (e.g., IntelliJ IDEA).
-- Set environment variables in for database connection in `application.yml`.
+- Set environment variables for database connection for `application.yml`.
   - DATABASE_URL
   - DATABASE_USER
   - DATABASE_PASSWORD

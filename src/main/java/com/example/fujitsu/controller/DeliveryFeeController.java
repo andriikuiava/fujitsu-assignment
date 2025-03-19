@@ -2,6 +2,7 @@ package com.example.fujitsu.controller;
 
 import com.example.fujitsu.service.DeliveryFeeService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,11 @@ public class DeliveryFeeController {
      */
     @GetMapping
     @Operation(summary = "Get delivery fee for a given city and vehicle type")
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "200", description = "Delivery fee calculated successfully"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Invalid city or vehicle type"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "503", description = "Service unavailable due to the weather")
+    })
     public ResponseEntity<?> getDeliveryFee(@RequestParam String city, @RequestParam String vehicleType) {
         try {
             double fee = deliveryFeeService.calculateDeliveryFee(city, vehicleType);
